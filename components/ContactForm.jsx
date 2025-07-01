@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import Toaster , {toast} from "react-hot-toast";
 import * as z from 'zod';
 import {
   Form,
@@ -46,19 +47,39 @@ export default function ContactForm() {
     },
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
+  try {
     setIsSubmitting(true);
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    const result = await res.json();
+
+    if (res.ok) {
+      toast.success("form submit");
       setSubmitSuccess(true);
       form.reset();
       setTimeout(() => setSubmitSuccess(false), 5000);
-    }, 1500);
-  };
+    } else {
+      alert("Failed to send: " + result.message);
+    }
+  } catch (err) {
+    alert("Something went wrong. Try again later.");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+
 
   return (
     <section id="contact" className="py-20 bg-gradient-to-br from-blue-50 to-indigo-50 relative overflow-hidden">
+
+      <Toaster/>
+
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10">
         <div className="absolute top-20 left-10 w-72 h-72 bg-teal-200 rounded-full"></div>
