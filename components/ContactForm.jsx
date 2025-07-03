@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import Toaster , {toast} from "react-hot-toast";
+// import Toaster , {toast} from "react-hot-toast";
 import * as z from 'zod';
 import {
   Form,
@@ -51,13 +51,9 @@ export default function ContactForm() {
   try {
     setIsSubmitting(true);
 
-    const res = await fetch('/api/contact', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
+    const res = await axios.post('/api/contact',data,{
+      withCredentials:true
     });
-
-    const result = await res.json();
 
     if (res.ok) {
       toast.success("form submit");
@@ -78,7 +74,7 @@ export default function ContactForm() {
   return (
     <section id="contact" className="py-20 bg-gradient-to-br from-blue-50 to-indigo-50 relative overflow-hidden">
 
-      <Toaster/>
+      {/* <Toaster/> */}
 
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10">

@@ -3,45 +3,37 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Mail, Phone, MapPin, Clock, HeartHandshake } from 'lucide-react';
 import { useState } from 'react';
-// import toast,{Toaster} from 'react-hot-toast';
-
-const handleChange = (e) => {
-  const { name, value } = e.target;
-  setEmail((data) => ({
-    ...data,
-    [name]: value
-  }));
-};
-
-
-
-const handelSubscribe = async () => {
-  try {
-    const res = await fetch('/api/subscribe', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(email),
-    });
-
-    if (!res.ok) {
-      throw new Error('Subscription failed');
-    }
-    else{
-      // toast.success("Successfully sub");
-    }
-
-  } catch (error) {
-    console.error('Error during subscription:', error);
-  }
-};
+import axios from 'axios';
 
 
 
 export default function Footer() {
-
   const [email ,setEmail] = useState("");
+  
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setEmail(e.target.value);
+  };
+  
+  
+  
+  const handelSubscribe = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await axios.post('/api/subscribe',{email},{withCredentials:true});
+      console.log(res);
+  
+      if (!res.ok) {
+        throw new Error('Subscription failed');
+      }
+      
+      console.log(res);
+  
+    } catch (error) {
+      console.error('Error during subscription:', error);
+    }
+  };
 
   return (
     <footer className="bg-slate-900 text-slate-100 pt-16 pb-8 relative overflow-hidden">
@@ -185,7 +177,7 @@ export default function Footer() {
                 />
               </div>
               <Button 
-                type="submit" 
+                type="button" 
                 onClick={handelSubscribe}
                 className="bg-teal-600 hover:bg-teal-700"
               >
