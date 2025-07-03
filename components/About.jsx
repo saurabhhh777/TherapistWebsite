@@ -8,6 +8,7 @@ export default function About() {
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10">
         <div className="absolute top-20 left-10 w-72 h-72 bg-teal-200 rounded-full"></div>
+
         <div className="absolute bottom-10 right-10 w-80 h-80 bg-indigo-200 rounded-full"></div>
       </div>
       
@@ -27,10 +28,10 @@ export default function About() {
           <div className="lg:w-2/5 relative">
             <div className="relative aspect-square w-full max-w-xs mx-auto">
               <Image 
-                src="/images/headshot.jpg" 
+                src="/therapist.png" 
                 alt="Dr. Serena Blake"
                 fill
-                className="rounded-full object-cover border-8 border-white shadow-xl"
+                className="rounded-full object-cover object-top border-8 border-white shadow-xl"
               />
             </div>
             

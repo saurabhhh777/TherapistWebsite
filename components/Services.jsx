@@ -9,7 +9,7 @@ export default function Services() {
       title: "Anxiety & Stress Management",
       description: "Learn evidence-based techniques to reduce anxiety symptoms, manage stress, and build resilience. We'll work together to identify triggers and develop practical coping strategies for daily life.",
       price: "$200 / individual session",
-      image: "/images/anxiety.jpg",
+      image: "/anxiety.png",
       icon: <Brain className="w-8 h-8 text-teal-600" />,
       type: "individual",
       duration: "50-minute sessions",
@@ -19,7 +19,7 @@ export default function Services() {
       title: "Relationship Counseling",
       description: "Strengthen your relationships through improved communication, conflict resolution, and emotional connection. Whether you're facing partnership challenges or family dynamics, we'll navigate them together.",
       price: "$240 / couples session",
-      image: "/images/relationships.jpg",
+      image: "/relation.png",
       icon: <Heart className="w-8 h-8 text-rose-600" />,
       type: "couples",
       duration: "60-minute sessions",
@@ -28,7 +28,7 @@ export default function Services() {
     {
       title: "Trauma Recovery",
       description: "Heal from past traumatic experiences in a safe, supportive environment. Using trauma-informed approaches, we'll process difficult memories and help you regain control of your life.",
-      image: "/images/trauma.jpg",
+      image: "/trauma.png",
       price: "$200 / individual session",
       icon: <Shield className="w-8 h-8 text-indigo-600" />,
       type: "individual",
@@ -44,7 +44,7 @@ export default function Services() {
         <div className="absolute top-20 left-10 w-72 h-72 bg-teal-200 rounded-full"></div>
         <div className="absolute bottom-10 right-10 w-80 h-80 bg-indigo-200 rounded-full"></div>
       </div>
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
@@ -58,31 +58,31 @@ export default function Services() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Card 
-              key={index} 
+            <Card
+              key={index}
               className="overflow-hidden border-0 bg-white/90 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all duration-300 group"
             >
               {/* Image with overlay */}
               <div className="relative h-56 overflow-hidden">
-                <Image 
-                  src={service.image} 
+                <Image
+                  src={service.image}
                   alt={service.title}
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                 />
+
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
-                
+
                 {/* Service type badge */}
                 <div className="absolute top-4 right-4">
-                  <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                    service.type === "individual" 
-                      ? "bg-teal-100 text-teal-800" 
+                  <span className={`px-3 py-1 rounded-full text-sm font-medium ${service.type === "individual"
+                      ? "bg-teal-100 text-teal-800"
                       : "bg-rose-100 text-rose-800"
-                  }`}>
+                    }`}>
                     {service.type === "individual" ? "Individual" : "Couples"}
                   </span>
                 </div>
-                
+
                 {/* Title overlay */}
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <h3 className="text-xl font-bold text-white flex items-center">
@@ -93,10 +93,10 @@ export default function Services() {
                   </h3>
                 </div>
               </div>
-              
+
               <CardContent className="p-6">
                 <p className="text-slate-700 mb-6">{service.description}</p>
-                
+
                 {/* Features */}
                 <div className="mb-6">
                   <h4 className="font-medium text-slate-900 mb-3 flex items-center">
@@ -114,7 +114,7 @@ export default function Services() {
                     ))}
                   </ul>
                 </div>
-                
+
                 {/* Details */}
                 <div className="grid grid-cols-2 gap-4 border-t border-slate-200 pt-4">
                   <div className="flex items-center">
@@ -135,7 +135,7 @@ export default function Services() {
                     </div>
                   </div>
                 </div>
-                
+
                 {/* CTA - Button is now properly imported */}
                 <Button className="w-full mt-6 bg-teal-600 hover:bg-teal-700">
                   Learn More
@@ -144,7 +144,7 @@ export default function Services() {
             </Card>
           ))}
         </div>
-        
+
         {/* Additional information */}
         <div className="mt-16 max-w-4xl mx-auto bg-white rounded-xl p-8 border border-slate-200 shadow-sm">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -157,7 +157,7 @@ export default function Services() {
                 Evening and weekend appointments available to fit your busy schedule.
               </p>
             </div>
-            
+
             <div className="text-center">
               <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -169,7 +169,7 @@ export default function Services() {
                 15-minute introductory call to ensure we're a good fit before starting.
               </p>
             </div>
-            
+
             <div className="text-center">
               <div className="w-16 h-16 rounded-full bg-indigo-100 flex items-center justify-center mx-auto mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -184,7 +184,7 @@ export default function Services() {
           </div>
         </div>
       </div>
-      
+
       {/* Wave divider */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden">
         <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="fill-current text-white w-full h-16">
