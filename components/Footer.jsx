@@ -1,10 +1,50 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Mail, Phone, MapPin, Clock, HeartHandshake } from 'lucide-react';
+import { useState } from 'react';
+import toast,{Toaster} from 'react-hot-toast';
+
+const handleChange = (e) => {
+  const { name, value } = e.target;
+  setEmail((data) => ({
+    ...data,
+    [name]: value
+  }));
+};
+
+
+
+const handleSubscribe = async () => {
+  try {
+    const res = await fetch('/api/subscribe', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(email),
+    });
+
+    if (!res.ok) {
+      throw new Error('Subscription failed');
+    }
+    else{
+      toast.success("Successfully sub");
+    }
+
+  } catch (error) {
+    console.error('Error during subscription:', error);
+  }
+};
+
+
 
 export default function Footer() {
+
+  const [email ,setEmail] = useState("");
+
   return (
     <footer className="bg-slate-900 text-slate-100 pt-16 pb-8 relative overflow-hidden">
+      <Toaster/>
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10">
         <div className="absolute top-20 left-10 w-72 h-72 bg-teal-800 rounded-full"></div>
@@ -137,12 +177,15 @@ export default function Footer() {
                 <input 
                   type="email" 
                   id="email" 
-                  placeholder="Your email address" 
+                  placeholder="Your email address"
+                  value={email}
+                  onChange={handleChange} 
                   className="w-full p-3 bg-slate-800 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-teal-500"
                 />
               </div>
               <Button 
                 type="submit" 
+                onClick={handelSubscribe}
                 className="bg-teal-600 hover:bg-teal-700"
               >
                 Subscribe
