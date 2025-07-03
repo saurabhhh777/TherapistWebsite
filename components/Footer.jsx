@@ -1,8 +1,9 @@
+"use client"
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { Mail, Phone, MapPin, Clock, HeartHandshake } from 'lucide-react';
 import { useState } from 'react';
-import toast,{Toaster} from 'react-hot-toast';
+// import toast,{Toaster} from 'react-hot-toast';
 
 const handleChange = (e) => {
   const { name, value } = e.target;
@@ -14,7 +15,7 @@ const handleChange = (e) => {
 
 
 
-const handleSubscribe = async () => {
+const handelSubscribe = async () => {
   try {
     const res = await fetch('/api/subscribe', {
       method: 'POST',
@@ -28,7 +29,7 @@ const handleSubscribe = async () => {
       throw new Error('Subscription failed');
     }
     else{
-      toast.success("Successfully sub");
+      // toast.success("Successfully sub");
     }
 
   } catch (error) {
@@ -44,7 +45,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-slate-900 text-slate-100 pt-16 pb-8 relative overflow-hidden">
-      <Toaster/>
+      {/* <Toaster/> */}
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10">
         <div className="absolute top-20 left-10 w-72 h-72 bg-teal-800 rounded-full"></div>
